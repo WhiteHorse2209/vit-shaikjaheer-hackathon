@@ -1,0 +1,12 @@
+event_type,min_impact,equity_shock_pct,bond_shock_pct,loan_shock_pct,derivative_shock_pct,description,assumptions
+GEOPOLITICAL,7.0,-10.0,-5.0,-3.0,-12.0,Geopolitical Conflict & Supply Blockade Shock,"Simulation assumption: High-impact defense/strait conflict disrupts trade routes, triggers cross-border equity flight and derivative margin spikes."
+MACROECONOMIC,7.0,-7.0,-4.0,-2.0,-8.0,Stagflation & Emergency Monetary Tightening Shock,"Simulation assumption: Inflationary surprises push sovereign yields up, depressing equity valuations and corporate fixed income."
+CREDIT_EVENT,7.0,-8.0,-7.0,-10.0,-10.0,Systemic Credit Downgrade & Loan Default Shock,"Simulation assumption: Deteriorating corporate debt creditworthiness escalates loan write-downs and derivative spread blowouts."
+MARKET_CRASH,7.0,-15.0,-5.0,-5.0,-18.0,Systemic Market Flash Crash & Liquidity Disruption,"Simulation assumption: Severe cascade selling drains market liquidity, driving catastrophic losses across speculative equities and options."
+REGULATORY,7.0,-6.0,-2.0,-3.0,-7.0,Antitrust Divestiture & Regulatory Enforcement Shock,"Simulation assumption: Sweeping legal actions and structural break-up penalties target core mega-cap tech holdings."
+BANKRUPTCY,7.0,-12.0,-8.0,-12.0,-14.0,Institutional Involuntary Reorganization & Run Shock,"Simulation assumption: Major counterparty liquidity insolvency triggers debt haircuts and counterparty derivative unwinds."
+INTEREST_RATE,7.0,-5.0,-6.0,-3.0,-6.0,Central Bank Benchmark Rate Shock,"Simulation assumption: Abrupt rate shifts devalue duration-sensitive bonds and raise refinancing borrowing costs."
+MERGER_ACQUISITION,7.0,-3.0,-1.0,-1.0,-4.0,Leveraged Buyout & Merger Disruption Shock,"Simulation assumption: Complex transaction integration delays and debt burden pressures acquirer balance sheets."
+EARNINGS,7.0,-5.0,-1.0,-1.0,-4.0,Systemic Earnings Contraction Shock,"Simulation assumption: Broad corporate guidance downgrades trigger equity re-rating across tech and consumer sectors."
+PRODUCT_LAUNCH,7.0,-2.0,0.0,0.0,-2.0,Critical Product Delay or Recall Shock,"Simulation assumption: Hardware delivery delays or safety investigations dampen short-term growth expectations."
+OTHER,7.0,-4.0,-2.0,-1.0,-4.0,Generalized Tail-Risk Exogenous Shock,"Simulation assumption: Unclassified black-swan volatility ripple throughout multi-asset holdings."

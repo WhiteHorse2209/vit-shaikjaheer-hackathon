@@ -1,0 +1,20 @@
+asset_id,asset_class,instrument_name,ticker,currency,base_value,weight_pct,risk_rating,notes
+EQ-001,Equities,Apple Inc. Common Stock,AAPL,INR,5000000,0.05,A,Large Cap Tech
+EQ-002,Equities,Microsoft Corp. Common Stock,MSFT,INR,5000000,0.05,AAA,Enterprise Cloud
+EQ-003,Equities,NVIDIA Corp. Common Stock,NVDA,INR,6000000,0.06,A+,Semiconductor Hardware
+EQ-004,Equities,Amazon.com Inc. Common Stock,AMZN,INR,4000000,0.04,AA,E-Commerce / Cloud
+EQ-005,Equities,Alphabet Inc. Class A,GOOGL,INR,4000000,0.04,AA+,Search & Advertising
+EQ-006,Equities,Meta Platforms Inc. Class A,META,INR,4000000,0.04,A,Social Networking
+EQ-007,Equities,Tesla Inc. Common Stock,TSLA,INR,4000000,0.04,BBB,EV & Autonomous Fleet
+EQ-008,Equities,JPMorgan Chase & Co. Stock,JPM,INR,3000000,0.03,A+,Diversified Banking
+EQ-009,Equities,Visa Inc. Class A,V,INR,2500000,0.025,AA-,Global Payments
+EQ-010,Equities,Netflix Inc. Common Stock,NFLX,INR,2500000,0.025,BBB+,Streaming Media
+BD-001,Bonds,US 10Y Sovereign Benchmark,GOVT10Y,INR,12000000,0.12,AAA,High Liquidity Sovereign
+BD-002,Bonds,Investment Grade Corporate Bond Tranche,CORP-IG,INR,8000000,0.08,A,Fixed Income Credit
+BD-003,Bonds,High Yield Corporate Debt Basket,HY-BASKET,INR,5000000,0.05,BB,High Yield Spread
+LN-001,Loans,Syndicated Commercial Real Estate Facility,CRE-FAC,INR,8000000,0.08,BBB,Floating Rate Senior Secured
+LN-002,Loans,SME Corporate Working Capital Facility,SME-WCF,INR,7000000,0.07,BBB-,First Lien Term Loan
+LN-003,Loans,Automotive Fleet Infrastructure Revolver,AUTO-REV,INR,5000000,0.05,A-,Collateralized Revolver
+DR-001,Derivatives,S&P 500 Index Equity Hedging Puts,SPX-PUT,INR,5000000,0.05,NR,Downside Equity Protection
+DR-002,Derivatives,Interest Rate Swap 5Y Fixed-to-Float,IRS-5Y,INR,6000000,0.06,NR,Macro Rate Hedge
+DR-003,Derivatives,Credit Default Swap Index Protection,CDX-IG,INR,4000000,0.04,NR,Corporate Default Spread Hedge
