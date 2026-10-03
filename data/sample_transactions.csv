@@ -1,0 +1,11 @@
+transaction_id,timestamp,account_id,counterparty,transaction_type,asset_class,amount_inr,currency,status,notes
+TXN-1001,2026-10-01T09:15:00Z,ACC-WHOLESALE-01,Morgan Stanley Prime,Drawdown,Loans,8000000,INR,Settled,Syndicated Commercial Real Estate Facility initial advance
+TXN-1002,2026-10-01T10:30:00Z,ACC-WHOLESALE-01,Barclays Capital,Disbursement,Loans,7000000,INR,Settled,SME Corporate Working Capital Facility tranche A
+TXN-1003,2026-10-01T11:45:00Z,ACC-WHOLESALE-02,Goldman Sachs,Purchase,Equities,5000000,INR,Settled,Apple Inc. Common Stock block allocation
+TXN-1004,2026-10-01T12:00:00Z,ACC-WHOLESALE-02,JPMorgan Securities,Purchase,Equities,6000000,INR,Settled,NVIDIA Corp. Common Stock growth allocation
+TXN-1005,2026-10-01T13:15:00Z,ACC-WHOLESALE-03,BNP Paribas,Subscription,Bonds,12000000,INR,Settled,US 10Y Sovereign Benchmark allocation
+TXN-1006,2026-10-01T14:00:00Z,ACC-WHOLESALE-03,Citigroup Markets,Subscription,Bonds,8000000,INR,Settled,Investment Grade Corporate Bond Tranche
+TXN-1007,2026-10-01T14:45:00Z,ACC-WHOLESALE-04,CBOE Market Maker,Premium Payment,Derivatives,5000000,INR,Settled,S&P 500 Index Equity Hedging Puts
+TXN-1008,2026-10-01T15:30:00Z,ACC-WHOLESALE-04,Deutsche Bank AG,Notional Collateral,Derivatives,6000000,INR,Settled,Interest Rate Swap 5Y Fixed-to-Float
+TXN-1009,2026-10-02T09:30:00Z,ACC-WHOLESALE-01,Credit Agricole,Revolver Advance,Loans,5000000,INR,Settled,Automotive Fleet Infrastructure Revolver
+TXN-1010,2026-10-02T10:15:00Z,ACC-WHOLESALE-04,Societe Generale,Default Spread Hedge,Derivatives,4000000,INR,Settled,Credit Default Swap Index Protection

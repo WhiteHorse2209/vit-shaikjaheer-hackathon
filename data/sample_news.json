@@ -98,5 +98,25 @@
     "published_at": "2026-10-02T19:15:00Z",
     "company": "Visa Inc.",
     "ticker": "V"
+  },
+  {
+    "article_id": "demo-social-011",
+    "source": "Twitter/X (@MacroRiskWire)",
+    "title": "URGENT BREAKING: Rumors of emergency liquidity freeze in regional debt repurchase markets $JPM",
+    "content": "Unconfirmed reports of margin calls accelerating on short-term corporate debt facilities. Prime brokerages reviewing collateral haircuts and counterparty limits immediately.",
+    "url": "https://x.com/MacroRiskWire/status/1841298412",
+    "published_at": "2026-10-02T20:00:00Z",
+    "company": "JPMorgan Chase & Co.",
+    "ticker": "JPM"
+  },
+  {
+    "article_id": "demo-social-012",
+    "source": "Twitter/X (@TechEarningsLive)",
+    "title": "NVIDIA Blackwell B200 accelerator shipments surging 40% above guidance across cloud hyperscalers $NVDA",
+    "content": "Supply chain channel checks indicate unprecedented enterprise capex allocation for next-gen Blackwell GPU clusters from major cloud providers.",
+    "url": "https://x.com/TechEarningsLive/status/1841298413",
+    "published_at": "2026-10-02T20:30:00Z",
+    "company": "NVIDIA Corporation",
+    "ticker": "NVDA"
   }
 ]
