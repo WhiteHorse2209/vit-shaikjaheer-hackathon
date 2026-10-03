@@ -23,26 +23,29 @@ class FinBERTSentimentAnalyzer:
     def __new__(cls):
         if cls._instance is None:
             cls._instance = super(FinBERTSentimentAnalyzer, cls).__new__(cls)
-            cls._instance._initialize_model()
+            cls._instance._initialized = False
         return cls._instance
 
-    def _initialize_model(self):
-        try:
-            logger.info("Initializing ProsusAI/finbert tokenizer and model...")
-            model_name = settings.FINBERT_MODEL_NAME
-            self._tokenizer = AutoTokenizer.from_pretrained(model_name)
-            self._model = AutoModelForSequenceClassification.from_pretrained(model_name)
-            self._model.eval()
-            
-            # ProsusAI/finbert labels: 0: positive, 1: negative, 2: neutral
-            self._label_mapping = {v.lower(): k for k, v in self._model.config.id2label.items()}
-            logger.info(f"FinBERT initialized successfully with mapping: {self._label_mapping}")
-        except Exception as e:
-            logger.warning(f"FinBERT model initialization encountered error: {e}. Falling back to calibrated financial lexicon.")
-            self._model = None
-            self._tokenizer = None
+    def _ensure_initialized(self):
+        if not self._initialized:
+            try:
+                logger.info("Initializing ProsusAI/finbert tokenizer and model...")
+                model_name = settings.FINBERT_MODEL_NAME
+                self._tokenizer = AutoTokenizer.from_pretrained(model_name)
+                self._model = AutoModelForSequenceClassification.from_pretrained(model_name)
+                self._model.eval()
+                
+                # ProsusAI/finbert labels: 0: positive, 1: negative, 2: neutral
+                self._label_mapping = {v.lower(): k for k, v in self._model.config.id2label.items()}
+                logger.info(f"FinBERT initialized successfully with mapping: {self._label_mapping}")
+            except Exception as e:
+                logger.warning(f"FinBERT model initialization encountered error: {e}. Falling back to calibrated financial lexicon.")
+                self._model = None
+                self._tokenizer = None
+            self._initialized = True
 
     def analyze(self, text: str) -> Tuple[float, float, str, Dict[str, float]]:
+        self._ensure_initialized()
         """
         Analyzes input financial text.
         Returns:
