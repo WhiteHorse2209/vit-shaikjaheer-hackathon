@@ -1,0 +1,102 @@
+[
+  {
+    "article_id": "demo-geo-001",
+    "source": "Financial Times / GDELT",
+    "title": "Escalating Geopolitical Tensions in Taiwan Strait Threaten Global Semiconductor Supply Chains",
+    "content": "Severe military posturing and airspace restrictions in the Taiwan Strait have stoked urgent fears of catastrophic semiconductor manufacturing disruption. Analysts warn that chipmaker NVIDIA and hardware titan Apple face unprecedented supply bottlenecks if shipping lanes face prolonged blockade.",
+    "url": "https://ft.com/content/taiwan-semiconductor-tensions-2026",
+    "published_at": "2026-10-02T10:15:00Z",
+    "company": "NVIDIA Corporation",
+    "ticker": "NVDA"
+  },
+  {
+    "article_id": "demo-macro-002",
+    "source": "Bloomberg / NewsAPI",
+    "title": "Federal Reserve Signals Emergency Monetary Tightening as Stagflation Concerns Resurface",
+    "content": "Federal Reserve Chair warned of persistent wage-price spirals and unexpected inflationary impulses, indicating benchmark interest rates will stay higher for longer. Global sovereign bond yields surged to multi-decade peaks while equity futures tumbled across major indices.",
+    "url": "https://bloomberg.com/news/articles/fed-signals-emergency-tightening-2026",
+    "published_at": "2026-10-02T11:30:00Z",
+    "company": "General Market",
+    "ticker": "MACRO"
+  },
+  {
+    "article_id": "demo-credit-003",
+    "source": "Reuters / GDELT",
+    "title": "Major Credit Rating Downgrade Hits Commercial Real Estate Debt Portfolios, Triggering Bank Margin Calls",
+    "content": "S&P and Moody's have downgraded billions of dollars in commercial mortgage-backed securities to speculative grade. Banking syndicates led by JPMorgan Chase are evaluating collateral calls as syndicated loan default risk climbs rapidly.",
+    "url": "https://reuters.com/markets/credit-downgrade-cre-debt-margin-calls-2026",
+    "published_at": "2026-10-02T12:00:00Z",
+    "company": "JPMorgan Chase & Co.",
+    "ticker": "JPM"
+  },
+  {
+    "article_id": "demo-crash-004",
+    "source": "Wall Street Journal / NewsAPI",
+    "title": "Algorithmic Cascade Triggers Flash Crash Across High-Growth Tech Equities",
+    "content": "Automated momentum strategies dumped over $400 billion in market value within 30 minutes following an exchange matching engine glitch. Spreads on equity derivatives blew out dramatically, inflicting severe liquidity strain on market makers.",
+    "url": "https://wsj.com/finance/markets/tech-flash-crash-liquidity-freeze-2026",
+    "published_at": "2026-10-02T13:45:00Z",
+    "company": "Alphabet Inc.",
+    "ticker": "GOOGL"
+  },
+  {
+    "article_id": "demo-reg-005",
+    "source": "CNBC / GDELT",
+    "title": "DOJ and FTC Launch Sweeping Antitrust Enforcement and Mandatory Spin-Off Action Against Big Tech Cloud",
+    "content": "Federal antitrust regulators have filed an injunction demanding structural divestiture of cloud computing assets and stringent licensing caps. Microsoft Corporation and Amazon face potential forced restructuring and multi-billion dollar penalties.",
+    "url": "https://cnbc.com/2026/10/02/doj-ftc-antitrust-cloud-lawsuit.html",
+    "published_at": "2026-10-02T14:10:00Z",
+    "company": "Microsoft Corporation",
+    "ticker": "MSFT"
+  },
+  {
+    "article_id": "demo-bank-006",
+    "source": "Reuters / NewsAPI",
+    "title": "Fintech Credit Unicorn Files Chapter 11 Bankruptcy Following Unhedged Liquidity Run",
+    "content": "A prominent non-bank mortgage and credit platform has filed for Chapter 11 bankruptcy reorganization after institutional counterparties froze short-term repurchase facilities. Debt holders face severe haircuts of up to 70 cents on the dollar.",
+    "url": "https://reuters.com/business/fintech-credit-bankruptcy-liquidity-run-2026",
+    "published_at": "2026-10-02T15:00:00Z",
+    "company": "General Market",
+    "ticker": "MACRO"
+  },
+  {
+    "article_id": "demo-earn-007",
+    "source": "MarketWatch / GDELT",
+    "title": "Apple Posts Record Enterprise Services and AI Revenue, Beating Wall Street Estimates",
+    "content": "Apple reported fiscal fourth-quarter earnings that surpassed consensus projections, fueled by surging enterprise subscription revenue and robust consumer adoption of iPhone 17 hardware. Operating cash flow reached a new quarterly record.",
+    "url": "https://marketwatch.com/story/apple-q4-earnings-beat-services-growth-2026",
+    "published_at": "2026-10-02T16:20:00Z",
+    "company": "Apple Inc.",
+    "ticker": "AAPL"
+  },
+  {
+    "article_id": "demo-prod-008",
+    "source": "TechCrunch / NewsAPI",
+    "title": "Tesla Expands Commercial Full Self-Driving Robotaxi Network into Five Key Global Hubs",
+    "content": "Tesla announced official regulatory transport licenses and deployment of over 5,000 autonomous CyberCab units. Elon Musk reaffirmed rapid volume scalability, pushing long-term fleet operating margins to anticipated highs.",
+    "url": "https://techcrunch.com/2026/10/02/tesla-commercial-robotaxi-expansion-fleet",
+    "published_at": "2026-10-02T17:05:00Z",
+    "company": "Tesla Inc.",
+    "ticker": "TSLA"
+  },
+  {
+    "article_id": "demo-merg-009",
+    "source": "Bloomberg / GDELT",
+    "title": "Amazon Finalizes $4.2 Billion Acquisition of Autonomous Robotics Manufacturer",
+    "content": "Amazon has completed the all-cash acquisition of NextGen Robotics to accelerate fulfillment automation across international distribution centers. The transaction is projected to reduce warehouse fulfillment cycle times by 35 percent.",
+    "url": "https://bloomberg.com/news/articles/amazon-completes-robotics-acquisition-2026",
+    "published_at": "2026-10-02T18:00:00Z",
+    "company": "Amazon.com Inc.",
+    "ticker": "AMZN"
+  },
+  {
+    "article_id": "demo-rate-010",
+    "source": "Financial Times / NewsAPI",
+    "title": "European Central Bank Holds Key Policy Rate at 3.25%, Projecting Stable Economic Recovery",
+    "content": "The European Central Bank maintained its benchmark deposit facility rate unchanged, pointing to balanced disinflation trends across Eurozone economies. Sovereign debt spreads remained calm following the monetary policy statement.",
+    "url": "https://ft.com/content/ecb-policy-rate-decision-stable-2026",
+    "published_at": "2026-10-02T19:15:00Z",
+    "company": "Visa Inc.",
+    "ticker": "V"
+  }
+]
