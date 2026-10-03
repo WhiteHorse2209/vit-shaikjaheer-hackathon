@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S&P Global & CRISIL | AI/NLP Financial Risk Engine & Stress Testing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --bg-card: rgba(18, 24, 38, 0.75);
+      --bg-card-hover: rgba(26, 34, 52, 0.85);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(59, 130, 246, 0.3);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --brand-blue: #3b82f6;
+      --brand-cyan: #06b6d4;
+      --risk-red: #ef4444;
+      --risk-amber: #f59e0b;
+      --risk-green: #10b981;
+      --glass-blur: blur(16px);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at 15% 15%, #111a2e 0%, var(--bg-dark) 100%);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .brand-font {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Top Navigation */
+    header {
+      background: rgba(9, 13, 22, 0.85);
+      backdrop-filter: var(--glass-blur);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
+      color: white;
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+
+    .title-group h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .title-group p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .btn {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.45);
+    }
+
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+    }
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-danger {
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      color: white;
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    }
+    .btn-danger:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(220, 38, 38, 0.45);
+    }
+
+    /* Container Layout */
+    .dashboard-container {
+      max-width: 1440px;
+      margin: 1.5rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* Metrics Grid */
+    .metric-card {
+      grid-column: span 3;
+      background: var(--bg-card);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 1.25rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+    .metric-card:hover {
+      border-color: var(--border-accent);
+      background: var(--bg-card-hover);
+    }
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #3b82f6, #06b6d4);
+    }
+    .metric-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .metric-val {
+      font-size: 1.85rem;
+      font-weight: 700;
+      margin: 0.4rem 0;
+      font-family: 'Outfit', sans-serif;
+    }
+    .metric-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .text-positive { color: var(--risk-green); }
+    .text-negative { color: var(--risk-red); }
+    .text-warning { color: var(--risk-amber); }
+
+    /* Chart Cards */
+    .card-6 {
+      grid-column: span 6;
+      background: var(--bg-card);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+    .card-12 {
+      grid-column: span 12;
+      background: var(--bg-card);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .card-title span {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    /* Signals Table */
+    .table-responsive {
+      overflow-x: auto;
+      border-radius: 8px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.85rem;
+    }
+    th {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-muted);
+      padding: 0.85rem 1rem;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border-subtle);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+    }
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+      color: #cbd5e1;
+      vertical-align: middle;
+    }
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+      color: white;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .badge-high-impact {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      animation: pulse-border 2s infinite;
+    }
+    .badge-moderate {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .badge-event {
+      background: rgba(59, 130, 246, 0.15);
+      color: #93c5fd;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+    .badge-ticker {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f1f5f9;
+      font-family: monospace;
+      font-weight: 700;
+    }
+
+    @keyframes pulse-border {
+      0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+      70% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+    }
+
+    /* Custom Event Simulator Drawer */
+    .simulator-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px dashed var(--border-accent);
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-top: 1rem;
+    }
+    .sim-form {
+      display: grid;
+      grid-template-columns: 2fr 3fr 1fr;
+      gap: 1rem;
+      align-items: center;
+    }
+    .sim-input {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      color: white;
+      padding: 0.65rem 0.85rem;
+      font-size: 0.85rem;
+      width: 100%;
+    }
+    .sim-input:focus {
+      outline: none;
+      border-color: var(--brand-blue);
+    }
+
+    /* Disclaimer Alert */
+    .disclaimer-banner {
+      grid-column: span 12;
+      background: rgba(30, 41, 59, 0.5);
+      border-left: 4px solid var(--brand-blue);
+      padding: 0.85rem 1.25rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Toast Notification */
+    #toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #1e293b;
+      border: 1px solid var(--brand-blue);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 100;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 1024px) {
+      .metric-card { grid-column: span 6; }
+      .card-6 { grid-column: span 12; }
+      .sim-form { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .metric-card { grid-column: span 12; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header>
+    <div class="brand-block">
+      <div class="brand-badge">S&P & CRISIL</div>
+      <div class="title-group">
+        <h1>AI/NLP Financial Risk Engine & Stress Testing</h1>
+        <p>Candidate: <strong>SHAIK JAHEER AHMED</strong> | VIT Chennai | Module B: Strategic Portfolio Stress Testing</p>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-glass" onclick="triggerIngestion()">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/><path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/></svg>
+        Ingest News (Demo)
+      </button>
+      <button class="btn btn-primary" onclick="runNLPEngine()">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/></svg>
+        Process FinBERT Signals
+      </button>
+      <button class="btn btn-danger" onclick="triggerStressAll()">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.15.15 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.2.2 0 0 1-.054.06.1.1 0 0 1-.066.017H1.146a.1.1 0 0 1-.066-.017.2.2 0 0 1-.054-.06.18.18 0 0 1 .002-.183L7.884 2.073a.15.15 0 0 1 .054-.057m1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767z"/><path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/></svg>
+        Execute Stress Tests (>7.0)
+      </button>
+    </div>
+  </header>
+
+  <div class="dashboard-container">
+
+    <!-- Simulation Disclaimer -->
+    <div class="disclaimer-banner">
+      <strong>Regulatory & Simulation Assumption Notice:</strong> All stress test valuations are calculated under predefined simulation shock rules for academic evaluation in the S&P Global & CRISIL Campus Hackathon 2026. Models utilize public/synthetic data and do not constitute guaranteed empirical market predictions.
+    </div>
+
+    <!-- Top Key Metric Cards -->
+    <div class="metric-card">
+      <div class="metric-label">Base Portfolio Value</div>
+      <div class="metric-val" id="metric-portfolio-val">₹100,000,000</div>
+      <div class="metric-sub">
+        <span class="text-positive">● Multi-Asset Baseline</span> across 4 asset classes
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-label">Stressed Portfolio Value</div>
+      <div class="metric-val text-negative" id="metric-stressed-val">₹89,050,000</div>
+      <div class="metric-sub">
+        <span class="text-negative" id="metric-loss-pct">-10.95%</span> post-shock tail impact
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-label">Simulated Crisis Loss</div>
+      <div class="metric-val text-negative" id="metric-sim-loss">₹10,950,000</div>
+      <div class="metric-sub">
+        <span class="text-warning">● Maximum scenario loss</span> (Market Crash shock)
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-label">High-Impact Signals</div>
+      <div class="metric-val text-warning" id="metric-high-signals">6 / 10</div>
+      <div class="metric-sub">
+        <span class="text-warning">● Severity > 7.0</span> stress test triggers active
+      </div>
+    </div>
+
+    <!-- Chart Row: Asset Breakdown & Stress Loss by Class -->
+    <div class="card-6">
+      <div class="card-header">
+        <div class="card-title">Portfolio Asset Allocation <span>(Base ₹100M)</span></div>
+      </div>
+      <div style="height: 260px; position: relative;">
+        <canvas id="portfolioChart"></canvas>
+      </div>
+    </div>
+
+    <div class="card-6">
+      <div class="card-header">
+        <div class="card-title">Asset-Level Stress Shock Comparison <span>(Before vs After Shock)</span></div>
+      </div>
+      <div style="height: 260px; position: relative;">
+        <canvas id="stressShockChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Interactive Custom Breaking News Simulator -->
+    <div class="card-12">
+      <div class="card-header">
+        <div class="card-title">Live Interactive Headline Stress Test Simulator <span>(Jury Demo Testing)</span></div>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+        Type any custom breaking financial news headline or geopolitical bulletin below to run FinBERT sentiment scoring, event taxonomy classification, and trigger dynamic portfolio stress testing on the fly:
+      </p>
+      <div class="simulator-box">
+        <div class="sim-form">
+          <input type="text" id="sim-headline" class="sim-input" placeholder="Headline: e.g. Major credit rating agency downgrades commercial debt portfolios triggering margin calls" value="DOJ files sweeping antitrust breakup lawsuit against Big Tech cloud giants">
+          <input type="text" id="sim-content" class="sim-input" placeholder="Detailed bulletin: e.g. Federal prosecutors demand structural divestiture..." value="Federal antitrust authorities have initiated unprecedented divestiture proceedings against cloud providers, forcing immediate business restructuring.">
+          <button class="btn btn-primary" onclick="simulateCustomHeadline()" style="white-space: nowrap;">
+            Run AI Signal & Shock
+          </button>
+        </div>
+        <div id="sim-result-box" style="margin-top: 1rem; display: none; font-size: 0.85rem;"></div>
+      </div>
+    </div>
+
+    <!-- Structured Risk Signals Table -->
+    <div class="card-12">
+      <div class="card-header">
+        <div class="card-title">AI/NLP Financial Risk Signals Stream <span>(FinBERT & Event Taxonomy)</span></div>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-glass" style="font-size: 0.75rem; padding: 0.35rem 0.75rem;" onclick="filterTable('all')">All Signals</button>
+          <button class="btn btn-glass" style="font-size: 0.75rem; padding: 0.35rem 0.75rem;" onclick="filterTable('high')">High Impact (> 7.0)</button>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table id="signals-table">
+          <thead>
+            <tr>
+              <th>Entity / Ticker</th>
+              <th>Headline Summary</th>
+              <th>FinBERT Sentiment</th>
+              <th>Event Category</th>
+              <th>Impact Score</th>
+              <th>Confidence</th>
+              <th>Stress Test Trigger</th>
+            </tr>
+          </thead>
+          <tbody id="signals-tbody">
+            <tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Loading structured risk signals...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Stress Test Audit Trail -->
+    <div class="card-12">
+      <div class="card-header">
+        <div class="card-title">Module B: Strategic Portfolio Stress Test Execution History <span>(Audit Trail)</span></div>
+      </div>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Run ID</th>
+              <th>Event Type</th>
+              <th>Impact Score</th>
+              <th>Pre-Stress Valuation</th>
+              <th>Post-Stress Valuation</th>
+              <th>Simulated Loss</th>
+              <th>Loss %</th>
+              <th>Timestamp (UTC)</th>
+            </tr>
+          </thead>
+          <tbody id="history-tbody">
+            <tr><td colspan="8" style="text-align: center; color: var(--text-muted);">Loading stress test audit history...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="toast">Notification</div>
+
+  <script>
+    let portfolioDoughnutChart = null;
+    let stressBarChart = null;
+    let allSignalsData = [];
+
+    function showToast(msg) {
+      const t = document.getElementById("toast");
+      t.innerText = msg;
+      t.style.display = "block";
+      setTimeout(() => { t.style.display = "none"; }, 3500);
+    }
+
+    async function loadPortfolioData() {
+      try {
+        const res = await fetch("/api/portfolio");
+        const data = await res.json();
+        
+        document.getElementById("metric-portfolio-val").innerText = `₹${(data.total_value).toLocaleString('en-IN')}`;
+        
+        const labels = Object.keys(data.asset_classes);
+        const values = labels.map(k => data.asset_classes[k].base_value);
+        
+        const ctx = document.getElementById("portfolioChart").getContext("2d");
+        if (portfolioDoughnutChart) portfolioDoughnutChart.destroy();
+        
+        portfolioDoughnutChart = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: labels,
+            datasets: [{
+              data: values,
+              backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#ec4899'],
+              borderWidth: 2,
+              borderColor: '#090d16'
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'bottom', labels: { color: '#94a3b8' } }
+            }
+          }
+        });
+      } catch (e) {
+        console.error("Portfolio load error", e);
+      }
+    }
+
+    async function loadSignalsAndStress() {
+      try {
+        const res = await fetch("/api/stress-test/evaluate-all", { method: "POST" });
+        const data = await res.json();
+        allSignalsData = data.results || [];
+        
+        renderSignalsTable(allSignalsData);
+        updateSummaryMetrics(data);
+        renderStressShockChart(allSignalsData);
+        loadHistory();
+      } catch (e) {
+        console.error("Signals evaluate error", e);
+      }
+    }
+
+    function renderSignalsTable(items) {
+      const tbody = document.getElementById("signals-tbody");
+      if (!items || items.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center;">No signals found.</td></tr>';
+        return;
+      }
+      
+      tbody.innerHTML = items.map(item => {
+        const isHigh = item.impact_score > 7.0;
+        const sentScore = item.sentiment_score.toFixed(2);
+        const sentColor = sentScore < 0 ? 'text-negative' : (sentScore > 0 ? 'text-positive' : 'text-muted');
+        
+        const triggerBadge = isHigh
+          ? `<span class="badge badge-high-impact">⚡ TRIGGERED (-${item.loss_pct}%)</span>`
+          : `<span class="badge" style="background: rgba(255,255,255,0.05); color: #94a3b8;">MONITORING</span>`;
+
+        return `
+          <tr>
+            <td>
+              <strong>${item.company}</strong><br>
+              <span class="badge badge-ticker">${item.ticker}</span>
+            </td>
+            <td style="max-width: 320px;">
+              <span style="color: #f1f5f9; font-weight: 500;">${item.scenario_description}</span>
+            </td>
+            <td>
+              <span class="${sentColor}" style="font-weight: 600;">${sentScore > 0 ? '+' : ''}${sentScore}</span>
+            </td>
+            <td>
+              <span class="badge badge-event">${item.event_type}</span>
+            </td>
+            <td>
+              <span class="${isHigh ? 'badge badge-high-impact' : 'badge badge-moderate'}">${item.impact_score.toFixed(1)} / 10</span>
+            </td>
+            <td>
+              <span>0.90</span>
+            </td>
+            <td>
+              ${triggerBadge}
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function updateSummaryMetrics(evalData) {
+      const highRuns = (evalData.results || []).filter(r => r.triggered);
+      document.getElementById("metric-high-signals").innerText = `${evalData.triggered_count} / ${evalData.total_signals_evaluated}`;
+      
+      if (highRuns.length > 0) {
+        // Find worst case scenario loss
+        const worst = highRuns.reduce((prev, curr) => (curr.simulated_loss > prev.simulated_loss) ? curr : prev);
+        document.getElementById("metric-stressed-val").innerText = `₹${(worst.portfolio_after).toLocaleString('en-IN')}`;
+        document.getElementById("metric-sim-loss").innerText = `₹${(worst.simulated_loss).toLocaleString('en-IN')}`;
+        document.getElementById("metric-loss-pct").innerText = `-${worst.loss_pct}% (${worst.event_type})`;
+      }
+    }
+
+    function renderStressShockChart(runs) {
+      const worst = runs.find(r => r.event_type === "MARKET_CRASH") || runs.find(r => r.triggered) || runs[0];
+      if (!worst || !worst.asset_breakdown) return;
+      
+      const assetLabels = Object.keys(worst.asset_breakdown);
+      const beforeVals = assetLabels.map(k => worst.asset_breakdown[k].base_value / 1000000);
+      const afterVals = assetLabels.map(k => worst.asset_breakdown[k].stressed_value / 1000000);
+
+      const ctx = document.getElementById("stressShockChart").getContext("2d");
+      if (stressBarChart) stressBarChart.destroy();
+
+      stressBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: assetLabels,
+          datasets: [
+            {
+              label: 'Pre-Stress Base (₹M)',
+              data: beforeVals,
+              backgroundColor: '#3b82f6',
+              borderRadius: 6
+            },
+            {
+              label: `Post-Stress ${worst.event_type} (₹M)`,
+              data: afterVals,
+              backgroundColor: '#ef4444',
+              borderRadius: 6
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: { ticks: { color: '#94a3b8' }, grid: { display: false } },
+            y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+          },
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#94a3b8' } }
+          }
+        }
+      });
+    }
+
+    async function loadHistory() {
+      try {
+        const res = await fetch("/api/stress-test/history");
+        const runs = await res.json();
+        const tbody = document.getElementById("history-tbody");
+        if (!runs || runs.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="8" style="text-align: center;">No stress test audit history recorded yet.</td></tr>';
+          return;
+        }
+        tbody.innerHTML = runs.slice(0, 10).map(r => `
+          <tr>
+            <td><code style="color: #60a5fa;">${r.run_id}</code></td>
+            <td><span class="badge badge-event">${r.event_type}</span></td>
+            <td><span class="badge badge-high-impact">${r.impact_score.toFixed(1)}</span></td>
+            <td>₹${(r.portfolio_before).toLocaleString('en-IN')}</td>
+            <td>₹${(r.portfolio_after).toLocaleString('en-IN')}</td>
+            <td class="text-negative">-₹${(r.simulated_loss).toLocaleString('en-IN')}</td>
+            <td class="text-negative font-weight-bold">-${r.loss_pct}%</td>
+            <td style="font-size: 0.75rem; color: var(--text-muted);">${r.created_at}</td>
+          </tr>
+        `).join('');
+      } catch (e) {
+        console.error("History error", e);
+      }
+    }
+
+    function filterTable(type) {
+      if (type === 'high') {
+        const filtered = allSignalsData.filter(s => s.impact_score > 7.0);
+        renderSignalsTable(filtered);
+      } else {
+        renderSignalsTable(allSignalsData);
+      }
+    }
+
+    async function triggerIngestion() {
+      showToast("Ingesting news feeds (DEMO mode)...");
+      try {
+        const res = await fetch("/api/ingest", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ mode: "DEMO" })
+        });
+        const data = await res.json();
+        showToast(`Ingested ${data.count} normalized articles successfully!`);
+        loadSignalsAndStress();
+      } catch (e) {
+        showToast("Ingestion error: " + e.message);
+      }
+    }
+
+    async function runNLPEngine() {
+      showToast("Running FinBERT sentiment and Event Classification pipeline...");
+      try {
+        const res = await fetch("/api/nlp/process", { method: "POST" });
+        const data = await res.json();
+        showToast(`Generated ${data.count} risk signals!`);
+        loadSignalsAndStress();
+      } catch (e) {
+        showToast("NLP Processing error: " + e.message);
+      }
+    }
+
+    async function triggerStressAll() {
+      showToast("Executing Strategic Stress Test Evaluation across all signals...");
+      loadSignalsAndStress();
+      showToast("Strategic Stress Tests complete!");
+    }
+
+    async function simulateCustomHeadline() {
+      const headline = document.getElementById("sim-headline").value;
+      const content = document.getElementById("sim-content").value;
+      if (!headline) return;
+
+      showToast("Scoring custom headline via FinBERT & Event Classifier...");
+      try {
+        const res = await fetch("/api/nlp/analyze-text", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ title: headline, content: content })
+        });
+        const data = await res.json();
+        const sig = data.signal;
+        const st = data.stress_test;
+
+        const box = document.getElementById("sim-result-box");
+        box.style.display = "block";
+        box.innerHTML = `
+          <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid ${st.triggered ? '#ef4444' : '#3b82f6'}; border-radius: 8px; padding: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <strong>Entity: ${sig.company} (${sig.ticker})</strong>
+              <div>
+                <span class="badge badge-event">${sig.event_type}</span>
+                <span class="badge ${sig.impact_score > 7.0 ? 'badge-high-impact' : 'badge-moderate'}">Impact: ${sig.impact_score.toFixed(1)} / 10</span>
+              </div>
+            </div>
+            <p><strong>FinBERT Sentiment Score:</strong> <span class="${sig.sentiment_score < 0 ? 'text-negative' : 'text-positive'}">${sig.sentiment_score.toFixed(3)}</span> | <strong>Confidence:</strong> ${(sig.confidence * 100).toFixed(0)}%</p>
+            <p style="margin-top: 0.4rem;"><strong>Stress Test Status:</strong> ${st.triggered ? '<span class="text-negative font-weight-bold">⚡ STRESS TEST TRIGGERED (> 7.0)</span>' : '<span class="text-positive">Sub-threshold event (No shock applied)</span>'}</p>
+            ${st.triggered ? `
+              <p style="color: #f87171; margin-top: 0.3rem;"><strong>Simulated Portfolio Loss:</strong> -₹${(st.simulated_loss).toLocaleString('en-IN')} (-${st.loss_pct}%) | <strong>Post-Stress Value:</strong> ₹${(st.portfolio_after).toLocaleString('en-IN')}</p>
+              <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.3rem;"><em>Scenario Assumption: ${st.simulation_assumptions}</em></p>
+            ` : ''}
+          </div>
+        `;
+        loadHistory();
+      } catch (e) {
+        showToast("Simulation error: " + e.message);
+      }
+    }
+
+    // Auto-init on page load
+    window.addEventListener("DOMContentLoaded", () => {
+      loadPortfolioData();
+      loadSignalsAndStress();
+    });
+  </script>
+</body>
+</html>
