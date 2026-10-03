@@ -1,0 +1,112 @@
+[
+  {
+    "article_id": "demo-geo-001",
+    "company": "NVIDIA Corporation",
+    "ticker": "NVDA",
+    "sentiment_score": -0.9535,
+    "event_type": "GEOPOLITICAL",
+    "impact_score": 10.0,
+    "confidence": 0.97,
+    "source": "Financial Times / GDELT",
+    "processed_at": "2026-10-03T02:53:52Z"
+  },
+  {
+    "article_id": "demo-macro-002",
+    "company": "General Market",
+    "ticker": "MACRO",
+    "sentiment_score": -0.906,
+    "event_type": "MACROECONOMIC",
+    "impact_score": 8.8,
+    "confidence": 0.88,
+    "source": "Bloomberg / NewsAPI",
+    "processed_at": "2026-10-03T02:53:52Z"
+  },
+  {
+    "article_id": "demo-credit-003",
+    "company": "JPMorgan Chase & Co.",
+    "ticker": "JPM",
+    "sentiment_score": -0.953,
+    "event_type": "CREDIT_EVENT",
+    "impact_score": 9.8,
+    "confidence": 0.97,
+    "source": "Reuters / GDELT",
+    "processed_at": "2026-10-03T02:53:53Z"
+  },
+  {
+    "article_id": "demo-crash-004",
+    "company": "Alphabet Inc.",
+    "ticker": "GOOGL",
+    "sentiment_score": -0.9611,
+    "event_type": "MARKET_CRASH",
+    "impact_score": 10.0,
+    "confidence": 0.97,
+    "source": "Wall Street Journal / NewsAPI",
+    "processed_at": "2026-10-03T02:53:53Z"
+  },
+  {
+    "article_id": "demo-reg-005",
+    "company": "Microsoft Corporation",
+    "ticker": "MSFT",
+    "sentiment_score": -0.928,
+    "event_type": "REGULATORY",
+    "impact_score": 8.6,
+    "confidence": 0.96,
+    "source": "CNBC / GDELT",
+    "processed_at": "2026-10-03T02:53:53Z"
+  },
+  {
+    "article_id": "demo-bank-006",
+    "company": "General Market",
+    "ticker": "MACRO",
+    "sentiment_score": -0.958,
+    "event_type": "BANKRUPTCY",
+    "impact_score": 10.0,
+    "confidence": 0.97,
+    "source": "Reuters / NewsAPI",
+    "processed_at": "2026-10-03T02:53:53Z"
+  },
+  {
+    "article_id": "demo-earn-007",
+    "company": "Apple Inc.",
+    "ticker": "AAPL",
+    "sentiment_score": 0.9303,
+    "event_type": "EARNINGS",
+    "impact_score": 3.8,
+    "confidence": 0.97,
+    "source": "MarketWatch / GDELT",
+    "processed_at": "2026-10-03T02:53:53Z"
+  },
+  {
+    "article_id": "demo-prod-008",
+    "company": "Tesla Inc.",
+    "ticker": "TSLA",
+    "sentiment_score": 0.9354,
+    "event_type": "PRODUCT_LAUNCH",
+    "impact_score": 3.3,
+    "confidence": 0.97,
+    "source": "TechCrunch / NewsAPI",
+    "processed_at": "2026-10-03T02:53:53Z"
+  },
+  {
+    "article_id": "demo-merg-009",
+    "company": "Amazon.com Inc.",
+    "ticker": "AMZN",
+    "sentiment_score": 0.8908,
+    "event_type": "MERGER_ACQUISITION",
+    "impact_score": 4.8,
+    "confidence": 0.96,
+    "source": "Bloomberg / GDELT",
+    "processed_at": "2026-10-03T02:53:53Z"
+  },
+  {
+    "article_id": "demo-rate-010",
+    "company": "Visa Inc.",
+    "ticker": "V",
+    "sentiment_score": 0.2647,
+    "event_type": "INTEREST_RATE",
+    "impact_score": 4.8,
+    "confidence": 0.77,
+    "source": "Financial Times / NewsAPI",
+    "processed_at": "2026-10-03T02:53:53Z"
+  }
+]
