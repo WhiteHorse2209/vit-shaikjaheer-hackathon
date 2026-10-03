@@ -8,7 +8,7 @@
     "impact_score": 10.0,
     "confidence": 0.97,
     "source": "Financial Times / GDELT",
-    "processed_at": "2026-10-03T02:53:52Z"
+    "processed_at": "2026-10-03T03:32:27Z"
   },
   {
     "article_id": "demo-macro-002",
@@ -19,7 +19,7 @@
     "impact_score": 8.8,
     "confidence": 0.88,
     "source": "Bloomberg / NewsAPI",
-    "processed_at": "2026-10-03T02:53:52Z"
+    "processed_at": "2026-10-03T03:32:27Z"
   },
   {
     "article_id": "demo-credit-003",
@@ -30,7 +30,7 @@
     "impact_score": 9.8,
     "confidence": 0.97,
     "source": "Reuters / GDELT",
-    "processed_at": "2026-10-03T02:53:53Z"
+    "processed_at": "2026-10-03T03:32:27Z"
   },
   {
     "article_id": "demo-crash-004",
@@ -41,7 +41,7 @@
     "impact_score": 10.0,
     "confidence": 0.97,
     "source": "Wall Street Journal / NewsAPI",
-    "processed_at": "2026-10-03T02:53:53Z"
+    "processed_at": "2026-10-03T03:32:28Z"
   },
   {
     "article_id": "demo-reg-005",
@@ -52,7 +52,7 @@
     "impact_score": 8.6,
     "confidence": 0.96,
     "source": "CNBC / GDELT",
-    "processed_at": "2026-10-03T02:53:53Z"
+    "processed_at": "2026-10-03T03:32:28Z"
   },
   {
     "article_id": "demo-bank-006",
@@ -63,7 +63,7 @@
     "impact_score": 10.0,
     "confidence": 0.97,
     "source": "Reuters / NewsAPI",
-    "processed_at": "2026-10-03T02:53:53Z"
+    "processed_at": "2026-10-03T03:32:28Z"
   },
   {
     "article_id": "demo-earn-007",
@@ -74,7 +74,7 @@
     "impact_score": 3.8,
     "confidence": 0.97,
     "source": "MarketWatch / GDELT",
-    "processed_at": "2026-10-03T02:53:53Z"
+    "processed_at": "2026-10-03T03:32:28Z"
   },
   {
     "article_id": "demo-prod-008",
@@ -85,7 +85,7 @@
     "impact_score": 3.3,
     "confidence": 0.97,
     "source": "TechCrunch / NewsAPI",
-    "processed_at": "2026-10-03T02:53:53Z"
+    "processed_at": "2026-10-03T03:32:28Z"
   },
   {
     "article_id": "demo-merg-009",
@@ -96,7 +96,7 @@
     "impact_score": 4.8,
     "confidence": 0.96,
     "source": "Bloomberg / GDELT",
-    "processed_at": "2026-10-03T02:53:53Z"
+    "processed_at": "2026-10-03T03:32:28Z"
   },
   {
     "article_id": "demo-rate-010",
@@ -107,6 +107,28 @@
     "impact_score": 4.8,
     "confidence": 0.77,
     "source": "Financial Times / NewsAPI",
-    "processed_at": "2026-10-03T02:53:53Z"
+    "processed_at": "2026-10-03T03:32:29Z"
+  },
+  {
+    "article_id": "demo-social-011",
+    "company": "JPMorgan Chase & Co.",
+    "ticker": "JPM",
+    "sentiment_score": -0.9399,
+    "event_type": "MARKET_CRASH",
+    "impact_score": 10.0,
+    "confidence": 0.8,
+    "source": "Twitter/X (@MacroRiskWire)",
+    "processed_at": "2026-10-03T03:32:29Z"
+  },
+  {
+    "article_id": "demo-social-012",
+    "company": "NVIDIA Corporation",
+    "ticker": "NVDA",
+    "sentiment_score": 0.9179,
+    "event_type": "OTHER",
+    "impact_score": 2.7,
+    "confidence": 0.75,
+    "source": "Twitter/X (@TechEarningsLive)",
+    "processed_at": "2026-10-03T03:32:29Z"
   }
 ]

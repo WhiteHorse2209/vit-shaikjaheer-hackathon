@@ -112,7 +112,7 @@ In strict adherence to the hackathon guidelines, **only public and synthetic dat
 
 ```bash
 # 1. Clone the public repository
-git clone https://github.com/shaikjaheer/vit-shaikjaheer-hackathon.git
+git clone https://github.com/WhiteHorse2209/vit-shaikjaheer-hackathon.git
 cd vit-shaikjaheer-hackathon
 
 # 2. Create and activate a Python virtual environment
