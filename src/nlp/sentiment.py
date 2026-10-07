@@ -1,10 +1,12 @@
 import logging
-import torch
 from typing import Tuple, Dict
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from src.config import settings
 
 logger = logging.getLogger(__name__)
+
+torch = None
+AutoTokenizer = None
+AutoModelForSequenceClassification = None
 
 class FinBERTSentimentAnalyzer:
     """
@@ -27,9 +29,16 @@ class FinBERTSentimentAnalyzer:
         return cls._instance
 
     def _ensure_initialized(self):
+        global torch, AutoTokenizer, AutoModelForSequenceClassification
         if not self._initialized:
             try:
                 logger.info("Initializing ProsusAI/finbert tokenizer and model...")
+                import torch as _torch
+                from transformers import AutoTokenizer as _AutoTokenizer, AutoModelForSequenceClassification as _AutoModel
+                torch = _torch
+                AutoTokenizer = _AutoTokenizer
+                AutoModelForSequenceClassification = _AutoModel
+
                 model_name = settings.FINBERT_MODEL_NAME
                 self._tokenizer = AutoTokenizer.from_pretrained(model_name)
                 self._model = AutoModelForSequenceClassification.from_pretrained(model_name)
