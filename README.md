@@ -3,7 +3,7 @@
 **Candidate Name:** SHAIK JAHEER AHMED  
 **College Email ID:** shaikjaheer.ahmed2023@vitstudent.ac.in  
 **College / Campus:** VELLORE INSTITUTE OF TECHNOLOGY CHENNAI  
-**Demo Video Link:** [YouTube (Unlisted) - Walkthrough Demo](https://youtu.be/unlisted-placeholder-hackathon2026)  
+**Demo Video Link:** [YouTube- Walkthrough Demo](https://youtu.be/AmKp5abyFH4)  
 **Slide Deck Link:** [docs/presentation.pdf](docs/presentation.pdf)  
 
 ---
